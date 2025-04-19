@@ -1,0 +1,22 @@
+#################################### 
+#		Installing XAMPP 	       #
+####################################
+
+- See the FAQ for extra info
+	+ https://www.apachefriends.org/faq_linux.html
+- May need to manually install "net-tools" package
+
+- $cd /opt
+- $sudo wget https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.2.12/xampp-linux-x64-8.2.12-0-installer.run
+- $chmod 755 xampp-linux-*-installer.run
+- $sudo ./xampp-linux-*-installer.run
+
+#################################### 
+#		Configuring XAMPP 		   #
+####################################
+
+- For instrtuctions on starting and stopping with CLI or GUI see FAQ
+- If you encounter the error "Another web server is already running" do the following:
+	+ $sudo /etc/init.d/apache2 stop
+	+ $sudo /etc/init.d/mariadb stop
+- All HTML files are stored in the "htdocs" folder. Replace the default "index.html" with our current file.
