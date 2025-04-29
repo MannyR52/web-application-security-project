@@ -1,3 +1,13 @@
+<?php
+session_start();
+// Check if user is logged in
+if (!isset($_SESSION['user'])) {
+  header("Location: login_form.php");
+  exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,14 +53,14 @@
         <li class="nav-item"><a class="nav-link active" href="#"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
         <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-currency-dollar me-2"></i> Accounts</a></li>
         <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-shield-lock me-2"></i> Security</a></li>
-        <li class="nav-item"><a class="nav-link text-danger" href="#"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
-      </ul>
+        <li class="nav-item"><a class="nav-link text-danger" href="logout.php"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+        </ul>
     </nav>
 
     <!-- Main Content -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
 
-      <h2 class="mb-4">Welcome Back, user1</h2>
+    <h2 class="mb-4">Welcome Back, <?php echo $_SESSION['user']; ?></h2>
 
       <!-- Cards -->
       <div class="row g-4 mb-4">

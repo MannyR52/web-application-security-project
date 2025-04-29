@@ -1,9 +1,13 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Bootstrap Website</title>
+  <title>SecureBank | Login</title>
 
   <!-- Bootstrap CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -30,14 +34,14 @@
     <div class="card login-card">
       <div class="card-body">
         <h3 class="card-title text-center mb-4">Login</h3>
-        <form>
+        <form action="login.php" method="POST" onsubmit="alert('Form is submitting!')">
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="rememberMe">
