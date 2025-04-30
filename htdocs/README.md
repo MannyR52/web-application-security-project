@@ -1,0 +1,2 @@
+- All XAMPP config files will be put in here 
+- Place all files within your lampp/htdocs/ directory
