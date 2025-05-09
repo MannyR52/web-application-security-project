@@ -129,6 +129,29 @@ if (!isset($_SESSION['user'])) {
         </div>
       </div>
 
+      <!-- Vulnerable User Notes Form (XSS Test) -->
+      <div class="card mb-4">
+        <div class="card-header bg-danger text-white">
+          Vulnerable User Notes (XSS Test)
+        </div>
+        <div class="card-body bg-light">
+          <form method="GET" class="mb-3">
+            <div class="mb-2">
+              <label for="note" class="form-label">Leave a note:</label>
+              <input type="text" class="form-control" id="note" name="note" placeholder="Try a script...">
+            </div>
+            <button type="submit" class="btn btn-danger">Submit</button>
+          </form>
+
+          <?php
+          if (isset($_GET['note'])) {
+            $note = $_GET['note'];         // vulnerable to XSS
+            echo "<div><strong>Your Note:</strong> $note</div>";
+          }
+          ?>
+        </div>
+      </div>
+
       <footer class="text-muted small text-center mt-4">
         &copy; 2024 SecureBank. All rights reserved.
       </footer>
