@@ -26,11 +26,6 @@ session_start();
       border-radius: 1rem;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
     }
-    .toggle-buttons {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-    }
   </style>
 </head>
 <body>
@@ -39,11 +34,7 @@ session_start();
     <div class="card login-card">
       <div class="card-body">
         <h3 class="card-title text-center mb-4">Login</h3>
-         <div class="toggle-buttons">
-              <button type="button" class="btn btn-warning w-50" onclick="document.getElementById('loginForm').action='login.php?mode=vulnerable';">Vulnerable Mode</button>
-              <button type="button" class="btn btn-success w-50" onclick="document.getElementById('loginForm').action='login.php?mode=patched';">Secure Mode</button>
-        </div>
-        <form id= "loginForm" action="login.php" method="POST">
+        <form action="login.php" method="POST">
           <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
