@@ -40,8 +40,8 @@ session_start();
       <div class="card-body">
         <h3 class="card-title text-center mb-4">Login</h3>
          <div class="toggle-buttons">
-              <button type="button" class="btn btn-warning w-50" onclick="document.getElementById('loginForm').action='login.php?mode=vulnerable'; document.getElementById('loginForm').submit();">Vulnerable Mode</button>
-              <button type="button" class="btn btn-success w-50" onclick="document.getElementById('loginForm').action='login.php?mode=patched'; document.getElementById('loginForm').submit();">Secure Mode</button>
+              <button type="button" class="btn btn-warning w-50" onclick="document.getElementById('loginForm').action='login.php?mode=vulnerable';">Vulnerable Mode</button>
+              <button type="button" class="btn btn-success w-50" onclick="document.getElementById('loginForm').action='login.php?mode=patched';">Secure Mode</button>
         </div>
         <form id= "loginForm" action="login.php" method="POST">
           <div class="mb-3">
