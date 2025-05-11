@@ -36,8 +36,8 @@ session_start();
         <h3 class="card-title text-center mb-4">Login</h3>
         <form action="login.php" method="POST" onsubmit="alert('Form is submitting!')">
           <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>

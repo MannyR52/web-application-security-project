@@ -1,5 +1,5 @@
 -- Drops DB if it exists
-DROP DATABASE IF EXISTS bankap;
+DROP DATABASE IF EXISTS bankapp;
 
 -- Creates new DB
 CREATE DATABASE bankapp;
@@ -16,7 +16,13 @@ CREATE TABLE users (
 
 -- Insert test user
 INSERT INTO users (email, password)
-VALUES ('user1@example.com', MD5('password123'));
+VALUES ('user1@example.com', MD5('password123')),
+       ('user2@example.com', MD5('usr2123')),
+       ('user3@example.com', MD5('bob363')),
+       ('user4@example.com', MD5('pass8301')),
+       ('user5@example.com', MD5('hardpaswrd23')),
+       ('user6@example.com', MD5('odabfa24')),
+       ('user7@example.com', MD5('bcoanr3290c'));
 
 -- USAGE
 -- In terminal: sudo mysql -u root -p < setup.sql
