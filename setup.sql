@@ -10,19 +10,19 @@ USE bankapp;
 -- Creates new users table
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL UNIQUE,
+    username VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
 );
 
 -- Insert test user
-INSERT INTO users (email, password)
-VALUES ('user1@example.com', MD5('password123')),
-       ('user2@example.com', MD5('usr2123')),
-       ('user3@example.com', MD5('bob363')),
-       ('user4@example.com', MD5('pass8301')),
-       ('user5@example.com', MD5('hardpaswrd23')),
-       ('user6@example.com', MD5('odabfa24')),
-       ('user7@example.com', MD5('bcoanr3290c'));
+INSERT INTO users (username, password)
+VALUES ('user1', MD5('password123')),
+       ('user2', MD5('usr2123')),
+       ('user3', MD5('bob363')),
+       ('user4', MD5('pass8301')),
+       ('user5', MD5('hardpaswrd23')),
+       ('user6', MD5('odabfa24')),
+       ('user7', MD5('bcoanr3290c'));
 
 -- USAGE
 -- In terminal: sudo mysql -u root -p < setup.sql

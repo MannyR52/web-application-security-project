@@ -23,26 +23,26 @@ if ($conn->connect_error) {
 
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username']) && isset($_POST['password'])) {
     // Capture POST data
-    $email = $_POST["email"];
+    $username = $_POST["username"];
     $password = $_POST["password"];
 
-    // MD5 hash pass (vulnerable, but as per your request)
+    // MD5 hash pass (vulnerable)
     $hashedPassword = md5($password);
 
-    // Unsecure SQL query (vulnerable)
-    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$hashedPassword'";
+    // Unsecure SQL query (vulnerable to SQL injection ' OR 1=1 --)
+    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$hashedPassword'";
 
     $result = $conn->query($sql);
 
     // If login is successful
-    if ($result->num_rows === 1) {
+    if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
 
         // Set session variables
-        $_SESSION['user'] = $email;
-        $_SESSION['user_name'] = $user['name']; // fetch the user's name if you have 'name' in your table
+        $_SESSION['user'] = $username;
+        $_SESSION['user_name'] = $user['name']; // fetch the user's name if 'name' in table
 
         // Redirect to dashboard
         header('Location: banking_dashboard.php');

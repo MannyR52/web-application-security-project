@@ -145,7 +145,7 @@ if (!isset($_SESSION['user'])) {
 
           <?php
           if (isset($_GET['note'])) {
-            $note = $_GET['note'];         // vulnerable to XSS
+            $note = $_GET['note'];         // vulnerable to XSS (Typing "<script>alert('REFLECTED XSS EXPLOIT')</script>" will cause alert to pop up.)
             echo "<div><strong>Your Note:</strong> $note</div>";
           }
           ?>
