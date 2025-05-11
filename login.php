@@ -29,6 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username']) && isset($
     $password = $_POST["password"];
     $mode = $_GET['mode'] ?? 'vulnerable';              // Defaults to vulnerable if none selected
 
+    $hashedPassword = md5($password);
+
     // Vulnerable SQL Query execution
     if ($mode === 'vulnerable') {
         // Unsecure SQL query (vulnerable to SQL injection ' OR 1=1 -- )
@@ -40,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username']) && isset($
         $user = $result->fetch_assoc();
         $hashedPasswordFromDB = $user['password'];
 
-        if (md5($password) === $hashedPasswordFromDB) {
+        if ($hashedPassword === $hashedPasswordFromDB) {
                 $_SESSION['user'] = $username;
                 header('Location: banking_dashboard.php');
                 exit();
