@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username']) && isset($
     // MD5 hash pass (vulnerable)
     $hashedPassword = md5($password);
 
-    // Unsecure SQL query (vulnerable to SQL injection ' OR 1=1 --)
+    // Secure SQL query ( no longer vulnerable to SQL injection ' OR 1=1 --)
     $sql = "SELECT id, username, password FROM users WHERE username = ? AND password = ?";
     $stmt = $conn->prepare($sql);
 
@@ -42,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username']) && isset($
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
             $_SESSION['user'] = $user['username'];
-            // $_SESSION['user_name'] = $user['name']; // If you have a 'name' column
             header('Location: banking_dashboard.php');
             exit();
         } else {
