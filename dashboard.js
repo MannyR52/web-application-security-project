@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-link");
-  const mainContent = document.querySelector("main");
+  const dynamicContent = document.getElementById("dynamic-dashboard-content");
 
   // Account balances
   let checkingBalance = 5200;
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function loadDashboard() {
-    mainContent.innerHTML = `
+    dynamicContent.innerHTML = `
       <h2 class="mb-4">Welcome Back, user1</h2>
       <div class="row g-4 mb-4">
         <div class="col-md-4">
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function loadAccounts() {
-    mainContent.innerHTML = `
+   dynamicContent.innerHTML = `
       <h2 class="mb-4">Your Accounts</h2>
       <div class="row g-4">
         <div class="col-md-6">
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Load dashboard by default
-  loadDashboard();
+  //loadDashboard();
 
   // Global deposit modal logic
   window.openDepositModal = function (account) {

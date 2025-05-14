@@ -79,40 +79,41 @@ if (!isset($_SESSION['user'])) {
 
     <!-- Main Content -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+      
+      <div id="dynamic-dashboard-content">
+        <h2 class="mb-4">Welcome Back, <?php echo $_SESSION['user']; ?></h2>
 
-    <h2 class="mb-4">Welcome Back, <?php echo $_SESSION['user']; ?></h2>
-
-      <!-- Cards -->
-      <div class="row g-4 mb-4">
-        <div class="col-md-4">
-          <div class="card text-bg-success shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title"><i class="bi bi-bank card-icon me-2"></i>Account Balance</h5>
-              <p class="card-text fs-4">$12,540.00</p>
-              <button class="btn btn-light btn-sm mt-3">Deposit</button>
+        <!-- Cards -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-4">
+            <div class="card text-bg-success shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-bank card-icon me-2"></i>Account Balance</h5>
+                <p class="card-text fs-4">$12,540.00</p>
+                <button class="btn btn-light btn-sm mt-3">Deposit</button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card text-bg-warning shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title"><i class="bi bi-person-check-fill card-icon me-2"></i>Last Login</h5>
-              <p class="card-text">Apr 18, 2024 @ 09:44 AM</p>
-              <button class="btn btn-light btn-sm mt-3">Deposit</button>
+          <div class="col-md-4">
+            <div class="card text-bg-warning shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-person-check-fill card-icon me-2"></i>Last Login</h5>
+                <p class="card-text">Apr 18, 2024 @ 09:44 AM</p>
+                <button class="btn btn-light btn-sm mt-3">Deposit</button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card text-bg-danger shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title"><i class="bi bi-exclamation-triangle-fill card-icon me-2"></i>Security Alerts</h5>
-              <p class="card-text">2 attempts flagged</p>
-              <button class="btn btn-light btn-sm mt-3">Deposit</button>
+          <div class="col-md-4">
+            <div class="card text-bg-danger shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-exclamation-triangle-fill card-icon me-2"></i>Security Alerts</h5>
+                <p class="card-text">2 attempts flagged</p>
+                <button class="btn btn-light btn-sm mt-3">Deposit</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
       <!-- Transactions Table -->
       <div class="card mb-4">
         <div class="card-header bg-dark text-white">
