@@ -184,6 +184,33 @@ if (!isset($_SESSION['user'])) {
         </div>
       </div>
 
+      <!-- Secure User Notes Form -->
+       <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    Secure User Notes
+                </div>
+                <div class="card-body bg-light">
+                    <form method="GET" class="mb-3">
+                        <div class="mb-2">
+                            <label for="secure_note" class="form-label">Leave a note:</label>
+                            <input type="text" class="form-control" id="secure_note" name="secure_note" placeholder="Enter your note here.">
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+
+                    <div>
+                        <strong>Your Note:</strong>
+                        <?php
+                        if (isset($_GET['secure_note'])) {
+                            $secureNote = $_GET['secure_note'];
+                            $safeNote = htmlspecialchars($secureNote, ENT_QUOTES, 'UTF-8');
+                            echo "<div>" . $safeNote . "</div>"; // Secure output
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+
       <footer class="text-muted small text-center mt-4">
         &copy; 2024 SecureBank. All rights reserved.
       </footer>
