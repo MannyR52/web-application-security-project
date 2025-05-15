@@ -114,6 +114,7 @@ if (!isset($_SESSION['user'])) {
           </div>
         </div>
       </div>
+      
       <!-- Transactions Table -->
       <div class="card mb-4">
         <div class="card-header bg-dark text-white">

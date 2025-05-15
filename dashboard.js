@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Load dashboard by default
-  //loadDashboard();
+  loadDashboard();
 
   // Global deposit modal logic
   window.openDepositModal = function (account) {
