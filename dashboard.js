@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadDashboard() {
     dynamicContent.innerHTML = `
-      <h2 class="mb-4">Welcome Back, user1</h2>
       <div class="row g-4 mb-4">
         <div class="col-md-4">
           <div class="card text-bg-success shadow-sm">

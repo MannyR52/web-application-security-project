@@ -79,9 +79,8 @@ if (!isset($_SESSION['user'])) {
 
     <!-- Main Content -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
-      
+      <h2 class="mb-4">Welcome Back, <?php echo $_SESSION['user']; ?></h2>
       <div id="dynamic-dashboard-content">
-        <h2 class="mb-4">Welcome Back, <?php echo $_SESSION['user']; ?></h2>
 
         <!-- Cards -->
         <div class="row g-4 mb-4">

@@ -19,10 +19,10 @@ INSERT INTO users (username, password)
 VALUES ('user1', MD5('password123')),
        ('user2', MD5('usr2123')),
        ('user3', MD5('bob363')),
-       ('user4', MD5('pass8301')),
-       ('user5', MD5('hardpaswrd23')),
-       ('user6', MD5('odabfa24')),
-       ('user7', MD5('bcoanr3290c'));
+       ('user4', MD5('hardpass')),
+       ('user5', MD5('hello100')),
+       ('user6', MD5('newpass8')),
+       ('user7', MD5('bread101'));
 
 -- USAGE
 -- In terminal: sudo mysql -u root -p < setup.sql
