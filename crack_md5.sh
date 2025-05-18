@@ -24,3 +24,7 @@ hashcat -m 0 -a 0 "$HASH_FILE" "$WORDLIST" --force --quiet
 echo -e "\nCracked hashes:"
 hashcat -m 0 -a 0 "$HASH_FILE" "$WORDLIST" --force --show > "$OUTPUT_FILE"
 cat "$OUTPUT_FILE"
+
+# TO RUN:
+# chmod +x crack_md5.sh
+# ./crack_md5.sh

@@ -1,6 +1,6 @@
-# Password Extraction & Cracking Demo via SQL Injection and Hashcat
+# Password Extraction & MD5 Cracking Demo via SQL Injection and Hashcat
 
-This project demonstrates how a vulnerable web application can be exploited using SQL injection to extract password hashes from a backend database, followed by cracking those hashes using *hashcat* and a common wordlist (`rockyou.txt`).
+This project demonstrates how a vulnerable web application can be exploited using SQL injection to extract password hashes from a backend database, followed by cracking those hashes using Hashcat and a common wordlist (`rockyou.txt`).
 
 ---
 
@@ -37,9 +37,9 @@ We used SQLmap to perform an automated SQL injection attack using the following 
     sqlmap -u "http://localhost/vulnerable_login.php" --data="username=user1&password=123456" --batch -D bankapp -T users --dump
     ```
 
-## 3. Prearing and Cracking Hashed Passwords
+## 3. Preparing and Cracking Hashed Passwords
 
-We saved the hashedpasswords to our `md5hashes.txt` and used *hashcat* and a bashscript `./crack_md5.sh` to automate the cracking process. The script used hashcat and the `rockyou.txt` password list to crack the md5 hashes, rendering this output:
+We saved the hashedpasswords to our `md5hashes.txt` and used Hashcat and a bashscript `./crack_md5.sh` to automate the cracking process. The script used Hashcat and the `rockyou.txt` password list to crack the md5 hashes, rendering this output:
 
 ```
 Cracked hashes:
@@ -54,4 +54,30 @@ cc9a250cde92dc08fa00a6c6d8944408:bread101
 
 ### Observations and Lessons
 
-This helped us learn that we should always use `parameterized queries` to prevent SQL injection and easy access to our databases with secure information. We should also avoid storing unsalted passwords, especially with weak encryption such as MD5. We can also attempt to employ attempt limits and input validation to avoid brute force and injection attacks in the future.
+This helped us learn that we should always use parameterized queries to prevent SQL injection and easy access to our databases with secure information. We should also avoid storing unsalted passwords, especially with weak encryption such as MD5. We can also attempt to employ attempt limits and input validation to avoid brute force and injection attacks in the future.
+
+# Using The More Secure Bcrypt
+To improve or password security we switched from MD5 to Bcrypt. Bcrypt is a password hashing function that is based on the Blowfish cipher. This method includes a salt (a random value added prior to hashing) which makes using methods such as HashCat extremely slow or fruitless. 
+
+Switching to Bcrypt was as easy, as it only involved the following change.
+
+From this -
+```
+$hashedPassword = md5($password);
+```
+To this -
+```
+$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+```
+
+## End Results
+
+The extraction of passwords used the same method as the one used to acquire our MD5 hashes. We used the same passwords as last time but this time hashed via Bcrypt. SQLmap was used for extraction and then a HashCat bash script was used to automate the process. However, this time around the script rendered no results. The estimated time to crack the hashes that was given by HashCat was **21 days, 11 hours**! regardless, there was no guarantee that any of the passwords would be cracked even in that time frame.
+
+This result was a significant difference from our last attempt at cracking the MD5 hashes which rendered all 7 passwords correctly within seconds. This small change in hashing methods rendered a much more secure method of storing our passwords.
+
+
+
+
+
+

@@ -8,7 +8,7 @@ This document details a Reflected Cross-Site Scripting (XSS) vulnerability found
 
 * **Location:** `banking_dashboard.php` (Vulnerable User Notes Form)
 
-* **Description:** The user notes feature was initially vulnerable to Reflected XSS due to the application's failure to properly sanitize user-provided input before displaying it on the page. The application directly embedded the user's input from the `note` GET parameter into the HTML output without any form of output encoding or filtering.
+* **Description:** The user notes feature was initially vulnerable to Reflected XSS due to the application's failure to properly sanitize user-provided input before displaying it on the page. The application directly embedded the user's input from the note GET parameter into the HTML output without any form of output encoding or filtering.
 
 **Vulnerable Code Snippet:**
 
