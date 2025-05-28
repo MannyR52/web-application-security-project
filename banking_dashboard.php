@@ -165,7 +165,7 @@ if (!isset($_SESSION['user'])) {
       <!-- Vulnerable User Notes Form (XSS Test) -->
       <div class="card mb-4">
         <div class="card-header bg-danger text-white">
-          Vulnerable User Notes (XSS Test)
+          Vulnerable User Notes
         </div>
         <div class="card-body bg-light">
           <form method="GET" class="mb-3">
@@ -210,6 +210,12 @@ if (!isset($_SESSION['user'])) {
                         ?>
                     </div>
                 </div>
+            </div>\
+
+            <div class="text-center mt-2">
+              <a href="reflectedXSS.pdf" target="_blank" class="btn btn-outline-info">
+                  Read More - Reflected XSS
+              </a>
             </div>
 
       <footer class="text-muted small text-center mt-4">

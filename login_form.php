@@ -65,6 +65,19 @@ session_start();
     </div>
   </div>
 
+  <div class="text-center mt-2">
+    <a href="SQLinjection.pdf" target="_blank" class="btn btn-outline-info">
+      Read More - SQL Injection
+    </a>
+  </div>
+
+  <div class="text-center mt-2">
+    <a href="crackingmd5.pdf" target="_blank" class="btn btn-outline-secondary">
+      Read more - MD5 Cracking
+    </a>
+  </div>
+
+
   <!-- Bootstrap JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
