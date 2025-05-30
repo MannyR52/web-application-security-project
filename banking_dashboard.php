@@ -1,8 +1,8 @@
 <?php
 session_start();
-// Check if user is logged in
+ //Check if user is logged in
 if (!isset($_SESSION['user'])) {
-  header("Location: login_form.php");
+ header("Location: login_form.php");
   exit();
 }
 ?>
@@ -165,7 +165,7 @@ if (!isset($_SESSION['user'])) {
       <!-- Vulnerable User Notes Form (XSS Test) -->
       <div class="card mb-4">
         <div class="card-header bg-danger text-white">
-          Vulnerable User Notes
+          Vulnerable User Notes (XSS Test)
         </div>
         <div class="card-body bg-light">
           <form method="GET" class="mb-3">
@@ -210,13 +210,31 @@ if (!isset($_SESSION['user'])) {
                         ?>
                     </div>
                 </div>
-            </div>\
-
-            <div class="text-center mt-2">
-              <a href="reflectedXSS.pdf" target="_blank" class="btn btn-outline-info">
-                  Read More - Reflected XSS
-              </a>
             </div>
+            <!-- ID Upload Form -->
+<div class="card mb-4">
+  <div class="card-header bg-info text-white">
+    Verify Your Identity
+  </div>
+  <div class="card-body bg-light">
+    <form action="secure_backend.php" method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="id-upload" class="form-label">Upload a government-issued ID (JPEG, PNG, or GIF only):</label>
+        <input class="form-control" type="file" name="id-upload" id="id-upload" required accept=".jpg,.jpeg,.png,.gif">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit for Review</button>
+    </form>
+
+    <?php
+    if (isset($_GET['status']) && $_GET['status'] === 'success') {
+      echo '<div class="alert alert-success mt-3">Your ID has been uploaded successfully and will be reviewed by our verification team.</div>';
+    } elseif (isset($_GET['status']) && $_GET['status'] === 'fail') {
+      echo '<div class="alert alert-danger mt-3">There was a problem with your upload. Please try again or contact support.</div>';
+    }
+    ?>
+  </div>
+</div>
+
 
       <footer class="text-muted small text-center mt-4">
         &copy; 2024 SecureBank. All rights reserved.
