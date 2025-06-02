@@ -11,7 +11,7 @@ dashboard.php, secure_backend.php, insecure_backend.php
  Vulnerable Code Snippet:
  <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['id-upload'])) {
-    $uploadDir = 'uploads/'; // Make sure this directory exists and is writable
+    $uploadDir = 'uploads/'; 
     $fileTmpPath = $_FILES['id-upload']['tmp_name'];
     $fileName = basename($_FILES['id-upload']['name']);
     $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['id-upload'])) {
     }
 }
 
-// Redirect back with failure
+
 header("Location: dashboard.php?status=fail");
 exit();
 ?>
