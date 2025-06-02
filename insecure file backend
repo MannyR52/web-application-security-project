@@ -1,50 +1,24 @@
 <?php
-$targetDir = __DIR__ . "/uploads/";
-if (!is_dir($targetDir)) {
-    mkdir($targetDir, 0755, true);
-}
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['id-upload'])) {
-    $file = $_FILES['id-upload'];
+    $uploadDir = 'uploads/'; // Make sure this directory exists and is writable
+    $fileTmpPath = $_FILES['id-upload']['tmp_name'];
+    $fileName = basename($_FILES['id-upload']['name']);
+    $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
-  
-    if ($file['error'] !== UPLOAD_ERR_OK) {
-        http_response_code(400);
-        echo "Upload failed. Error code: " . $file['error'];
-        exit;
+    // Only allow certain image types
+    
+        $safeFileName = uniqid('id_', true) . '.' . $fileExtension;
+        $destination = $uploadDir . $safeFileName;
+
+        if (move_uploaded_file($fileTmpPath, $destination)) {
+            // Redirect back with success and filename
+            header("Location: dashboard.php?status=success&image=" . urlencode($safeFileName));
+            exit();
+        
     }
-
- 
-    $finfo = new finfo(FILEINFO_MIME_TYPE);
-    $mime = $finfo->file($file['tmp_name']);
-
-    $allowedTypes = [
-        'jpg'  => 'image/jpeg',
-        'jpeg' => 'image/jpeg',
-        'png'  => 'image/png',
-    ];
-
-    $ext = array_search($mime, $allowedTypes, true);
-
-    if ($ext === false) {
-        http_response_code(415);
-        echo "Only JPG, JPEG, and PNG files are allowed.";
-        exit;
-    }
-
-    $fileName = 'id_' . date('Ymd_His') . '_' . bin2hex(random_bytes(5)) . "." . $ext;
-    $destination = $targetDir . $fileName;
-
-  
-    if (move_uploaded_file($file['tmp_name'], $destination)) {
-        echo "Upload successful.";
-    } else {
-        http_response_code(500);
-        echo "Failed to save file.";
-    }
-} else {
-    http_response_code(400);
-    echo "No file uploaded.";
 }
+
+// Redirect back with failure
+header("Location: dashboard.php?status=fail");
+exit();
 ?>
