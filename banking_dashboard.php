@@ -1,7 +1,7 @@
 <?php
 session_start();
  //Check if user is logged in
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])){
  header("Location: login_form.php");
   exit();
 }
@@ -14,7 +14,7 @@ if (!isset($_SESSION['user'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SecureBank | Dashboard</title>
-
+   <script src="dashboard.js" defer></script>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <!-- Bootstrap Icons -->
@@ -219,19 +219,34 @@ if (!isset($_SESSION['user'])) {
   <div class="card-body bg-light">
     <form action="secure_backend.php" method="POST" enctype="multipart/form-data">
       <div class="mb-3">
-        <label for="id-upload" class="form-label">Upload a government-issued ID (JPEG, PNG, or GIF only):</label>
-        <input class="form-control" type="file" name="id-upload" id="id-upload" required accept=".jpg,.jpeg,.png,.gif">
+        <label for="id-upload" class="form-label">Upload a government-issued ID(secure) (JPEG, PNG,SVG,html or GIF only):</label>
+        <input class="form-control" type="file" name="id-upload" id="id-upload" required accept=".jpg,.jpeg,.png,.gif,.svg,.html,.php">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit for Review</button>
+    </form>
+    <form action="insecure_backend.php" method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="id-upload" class="form-label">Upload a government-issued ID(insecure)(JPEG, PNG,SVG,html or GIF only):</label>
+        <input class="form-control" type="file" name="id-upload" id="id-upload" required accept=".jpg,.jpeg,.png,.gif,.svg,.html,.php">
       </div>
       <button type="submit" class="btn btn-primary">Submit for Review</button>
     </form>
 
     <?php
-    if (isset($_GET['status']) && $_GET['status'] === 'success') {
-      echo '<div class="alert alert-success mt-3">Your ID has been uploaded successfully and will be reviewed by our verification team.</div>';
-    } elseif (isset($_GET['status']) && $_GET['status'] === 'fail') {
-      echo '<div class="alert alert-danger mt-3">There was a problem with your upload. Please try again or contact support.</div>';
-    }
-    ?>
+    
+if (isset($_GET['status']) && $_GET['status'] === 'success') {
+  echo '<div class="alert alert-success mt-3">Your ID has been uploaded successfully and will be reviewed by our verification team.</div>';
+
+  if (isset($_GET['image'])) {
+    $imagePath = 'uploads/' . basename($_GET['image']);
+    // Show preview of uploaded image
+    echo "<div class='mt-3'><strong>Uploaded Image Preview:</strong><br><img src=\"$imagePath\" alt=\"Uploaded ID\" class=\"img-fluid border\" style=\"max-width:300px;\"></div>";
+  }
+} elseif (isset($_GET['status']) && $_GET['status'] === 'fail') {
+  echo '<div class="alert alert-danger mt-3">There was a problem with your upload. Please try again or contact support.</div>';
+}
+?>
+
   </div>
 </div>
 
@@ -245,7 +260,6 @@ if (!isset($_SESSION['user'])) {
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="dashboard.js"></script>
 </body>
 </html>
 
